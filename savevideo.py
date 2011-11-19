@@ -4,20 +4,20 @@ from webbrowser import open_new_tab
 
 
 def main(url):
-    requestHeaders = {\
-        "Origin": "http://savevideo.me",\
-        "X-Requested-With": "XMLHttpRequest",\
-        "User-Agent": "Mozilla/5.0 (Windows NT 5.1) AppleWebKit/535.2 (KHTML, like Gecko) Chrome/15.0.874.120 Safari/535.2",\
-        "Content-Type": "application/x-www-form-urlencoded",\
-        "Accept": "*/*",\
-        "Referer": "http://savevideo.me/?lang=en",\
-        "Accept-Language": "en-US,en;q=0.8",\
-        "Accept-Charset": "ISO-8859-1,utf-8;q=0.7,*;q=0.3"\
+    requestHeaders = {
+        "Origin": "http://savevideo.me",
+        "X-Requested-With": "XMLHttpRequest",
+        "User-Agent": "Mozilla/5.0 (Windows NT 5.1) AppleWebKit/535.2 (KHTML, like Gecko) Chrome/15.0.874.120 Safari/535.2",
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Accept": "*/*",
+        "Referer": "http://savevideo.me/?lang=en",
+        "Accept-Language": "en-US,en;q=0.8",
+        "Accept-Charset": "ISO-8859-1,utf-8;q=0.7,*;q=0.3"
     }
 
     
-    request = urllib2.Request('http://savevideo.me/get/',\
-                              urllib.urlencode({"url": url}),\
+    request = urllib2.Request('http://savevideo.me/get/',
+                              urllib.urlencode({"url": url}),
                               requestHeaders)
     
     try:        
