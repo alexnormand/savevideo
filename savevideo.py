@@ -22,8 +22,11 @@ def main(url):
     
     try:        
         response = urllib2.urlopen(request)
-        xml = response.read()         
-        links =  [ a['href'] for a in BeautifulSoup(xml).findAll('a')]
+        xml = response.read()
+
+        pattern = r'<a\s+href="(.*?)"\s*>'
+        
+        links =  re.findall(pattern, xml)
 
         print "Choose File you wish to Download"
 
