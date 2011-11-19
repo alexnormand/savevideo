@@ -64,9 +64,11 @@ def download_video(url):
 
 
 def main():        
-    parser = argparse.ArgumentParser(description='Download a video')
-    parser.add_argument("-nb",
-                        help="Download link in console instead\
+    parser = argparse.ArgumentParser(description='Download videos\
+    from various video hosting sites\
+    (youtube, vimeo, bliptv, dailymotion,...)')
+    parser.add_argument("-cli","--command-line",
+                        help="Download link on the command line instead\
                         of opening link in the system's default browser ",
                         action='store_true')
     parser.add_argument("url",
