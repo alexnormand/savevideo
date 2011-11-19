@@ -1,5 +1,4 @@
 import urllib2, urllib, sys, re
-from BeautifulSoup import BeautifulSoup
 from webbrowser import open_new_tab
 
 
@@ -23,9 +22,7 @@ def main(url):
     try:        
         response = urllib2.urlopen(request)
         xml = response.read()
-
-        pattern = r'<a\s+href="(.*?)"\s*>'
-        
+        pattern = r'<a\s+href="(.*?)"\s*>'        
         links =  re.findall(pattern, xml)
 
         print "Choose File you wish to Download"
