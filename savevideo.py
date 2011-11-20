@@ -67,7 +67,7 @@ def main():
     parser = argparse.ArgumentParser(description='Download videos\
     from various video hosting sites\
     (youtube, vimeo, bliptv, dailymotion,...)')
-    parser.add_argument("-cli","--command-line",
+    parser.add_argument("-cli",
                         help="Download link on the command line instead\
                         of opening link in the system's default browser ",
                         action='store_true')
@@ -83,7 +83,7 @@ def main():
 
     link = raw_input('> ')
 
-    if args.nb:
+    if args.cli:
         download_video(links[int(link)])    
     else:
         open_new_tab(links[int(link)])                            
