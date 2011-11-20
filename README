@@ -1,0 +1,12 @@
+usage: savevideo.py [-h] [-cli] url
+
+Download videos from various video hosting sites (youtube, vimeo, bliptv,
+dailymotion,...)
+
+positional arguments:
+  url         The url of the file you wish to download
+
+optional arguments:
+  -h, --help  show this help message and exit
+  -cli        Download link on the command line instead of opening link in the
+              system's default browser
