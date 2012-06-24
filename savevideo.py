@@ -5,9 +5,10 @@ import urllib2
 import argparse
 import sys
 import re
+import time 
 from webbrowser import open_new_tab
 from urlparse import urlparse
-from random import randint
+
                       
         
 def get_download_links(url):
@@ -43,12 +44,14 @@ def get_download_links(url):
 
 def download_video(url):
     o = urlparse(url)
-    file_name = o.path.split('/')[-1] +  str(randint(1,10000))
+    timestamp = int(time.mktime(time.localtime()))
+    file_name = str(timestamp) + o.path.split('/')[-1]
+
     u = urllib2.urlopen(url)
     f = open(file_name, 'wb')
     meta = u.info()
-    file_size = int(meta.getheaders("Content-Length")[0])
-    print "Downloading: %s Bytes: %s" % (file_name, file_size)
+    file_size = int(meta.getheaders("Content-Length")[0]) / 1048576.
+    print "Downloading: %s Bytes: %.2fM" % (file_name, file_size)
         
     file_size_dl = 0
     block_sz = 8192
