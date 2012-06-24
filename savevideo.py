@@ -32,7 +32,7 @@ def get_download_links(url):
     try:
         response = urllib2.urlopen(request)
         xml = response.read()
-        pattern = r'<a\s+href="(.*?)"\s*>'        
+        pattern = r'<a\s+href="(.*?)"\s*>.*?</a>(.*?)<br\s*/>' 
         links =  re.findall(pattern, xml)
         
         return links
@@ -78,17 +78,21 @@ def main():
 
     args = parser.parse_args()                         
     links = get_download_links(args.url)
+
+    if links is not None:
         
-    print "Choose File you wish to Download"    
-    for i in range(len(links)):
-        print "[%d] :  %s" % (i, links[i])        
+        print "Choose File you wish to Download"    
+        for i in range(len(links)):
+            print "[%d] :  %s" % (i, links[i][1])        
 
-    link = raw_input('> ')
+        link = raw_input('> ')
 
-    if args.cli:
-        download_video(links[int(link)])    
+        if args.cli:
+            download_video(links[int(link)][0])    
+        else:
+            open_new_tab(links[int(link)][0])                            
     else:
-        open_new_tab(links[int(link)])                            
+        print "Service unavailable please try again"
 
 
 if __name__ == "__main__":
