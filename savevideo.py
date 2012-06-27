@@ -51,17 +51,17 @@ def download_video(url):
     f = open(file_name, 'wb')
     meta = u.info()
     file_size = int(meta.getheaders("Content-Length")[0]) / 1048576.
-    print "Downloading: %s Bytes: %.2fM" % (file_name, file_size)
+    print "Downloading: %s Size: %.2f MB" % (file_name, file_size)
         
     file_size_dl = 0
     block_sz = 8192
     while True:
-        buffer = u.read(block_sz)
+        buffer = u.read(block_sz) 
         if not buffer:
             break
-        file_size_dl += len(buffer)
+        file_size_dl += len(buffer) / 1048576. 
         f.write(buffer)
-        status = r"%10d  [%3.2f%%]" % (file_size_dl, file_size_dl * 100. / file_size)
+        status = r"%.2f MB  [%3.2f%%]" % (file_size_dl, file_size_dl * 100. / file_size)
         status = status + chr(8)*(len(status)+1)
         print status,
 
@@ -85,15 +85,15 @@ def main():
     if links is not None:
         
         print "Choose File you wish to Download"    
-        for i in range(len(links)):
-            print "[%d] :  %s" % (i, links[i][1])        
+        for i, link in enumerate(links):
+            print "[%d] : %s" % (i, link[1])        
 
-        link = raw_input('> ')
+        chosen_link = int(raw_input('> '))
 
         if args.cli:
-            download_video(links[int(link)][0])    
+            download_video(links[chosen_link][0])    
         else:
-            open_new_tab(links[int(link)][0])                            
+            open_new_tab(links[chosen_link][0])                            
     else:
         print "Service unavailable please try again"
 
