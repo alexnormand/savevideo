@@ -71,7 +71,7 @@ def download_video(url):
 def main():        
     parser = argparse.ArgumentParser(description='Download videos\
     from various video hosting sites\
-    (youtube, vimeo, bliptv, dailymotion,...)')
+    (vimeo, bliptv, dailymotion,...)')
     parser.add_argument("-cli",
                         help="Download link on the command line instead\
                         of opening link in the system's default browser ",
