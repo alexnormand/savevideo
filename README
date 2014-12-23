@@ -1,6 +1,6 @@
 usage: savevideo.py [-h] [-cli] url
 
-Download videos from various video hosting sites (youtube, vimeo, bliptv,
+Download videos from various video hosting sites (vimeo, bliptv,
 dailymotion,...)
 
 positional arguments:
